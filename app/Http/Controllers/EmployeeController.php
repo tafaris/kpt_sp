@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Jobs\RegisterBonus;
 
 class EmployeeController extends Controller
 {
@@ -30,11 +31,13 @@ class EmployeeController extends Controller
     public function distributeBonus(Request $request)
     {
         try {
-            $success = Employee::distributeBonus();
+            RegisterBonus::dispatch();
+            $success = true;
+           // Employee::RegisterBonus();
             
             if ($success) {
                 return redirect()->route('employees.index')
-                    ->with('success', 'Bonuses have been distributed successfully to all employees!');
+                    ->with('success', 'Bonus distribution process started');
             } else {
                 return redirect()->route('employees.index')
                     ->with('error', 'Failed to distribute bonuses. Please try again.');
