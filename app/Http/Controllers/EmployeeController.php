@@ -31,7 +31,7 @@ class EmployeeController extends Controller
     public function distributeBonus(Request $request)
     {
         try {
-            RegisterBonus::dispatch();
+            RegisterBonus::dispatch()->onQueue('bonus.register');
             $success = true;
            // Employee::RegisterBonus();
             

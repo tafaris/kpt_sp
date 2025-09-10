@@ -23,6 +23,6 @@ class RegisterBonus implements ShouldQueue
      */
     public function handle(): void
     {
-        Employee::all()->each(fn ($employee) => DistributeBonus::dispatch($employee));
+        Employee::all()->each(fn ($employee) => DistributeBonus::dispatch($employee)->onQueue('bonus.distribute'));
     }
 }
