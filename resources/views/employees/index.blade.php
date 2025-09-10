@@ -9,17 +9,31 @@
         <p class="text-gray-600">Manage employee information and salaries</p>
     </div>
     <div>
-        <form action="{{ route('employees.increase-salary') }}" method="POST" class="inline">
-            @csrf
-            <button type="submit" 
-                    class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
-                    onclick="return confirm('Are you sure you want to increase salaries for all employees?')">
-                <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                </svg>
-                Increase Salaries
-            </button>
-        </form>
+<!-- Increase Salaries Form -->
+<form action="{{ route('employees.increase-salary') }}" method="POST" class="inline mr-4">
+    @csrf
+    <button type="submit" 
+            class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
+            onclick="return confirm('Are you sure you want to increase salaries for all employees?')">
+        <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+        </svg>
+        Increase Salaries
+    </button>
+</form>
+
+<!-- Distribute Bonuses Form -->
+<form action="{{ route('employees.distribute-bonus') }}" method="POST" class="inline">
+    @csrf
+    <button type="submit" 
+            class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out"
+            onclick="return confirm('Are you sure you want to distribute bonuses for all employees?')">
+        <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+        </svg>
+        Distribute Bonuses
+    </button>
+</form>
     </div>
 </div>
 

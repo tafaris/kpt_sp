@@ -22,18 +22,25 @@ class Employee extends Model
     /**
      * Execute stored procedure to increase salary
      */
-public static function increaseSalary($employeeId = null)
-{
-    try {
-        if ($employeeId) {
-            DB::statement('CALL sp_raise_salary(?)', [$employeeId]);
-        } else {
-            DB::statement('CALL sp_increase_all_salaries()');
+    public static function increaseSalary($employeeId = null)
+    {
+        try {
+            if ($employeeId) {
+                DB::statement('CALL sp_raise_salary(?)', [$employeeId]);
+            } else {
+                DB::statement('CALL sp_increase_all_salaries()');
+            }
+            return true;
+        } catch (\Exception $e) {
+            \Log::error('Salary increase failed: ' . $e->getMessage());
+            return false;
         }
-        return true;
-    } catch (\Exception $e) {
-        \Log::error('Salary increase failed: ' . $e->getMessage());
-        return false;
     }
-}
+    /**
+     * Execute stored procedure to distribute bonus
+     */
+    public static function distributeBonus($employeeId = null)
+    {
+        return DB::statement('CALL sp_dist_bonuses()');
+    }
 }
